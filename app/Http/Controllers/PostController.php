@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class PostController extends Controller
 {
@@ -14,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::latest()->paginate(4);
+        return Post::latest()->get();
     }
 
     /**
@@ -27,7 +28,7 @@ class PostController extends Controller
     {
         $request['slug'] = str_slug($request->title);
         Post::create($request->all());
-        return response('created','200');
+        return response('created',Response::HTTP_CREATED);
     }
 
     /**
@@ -63,6 +64,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return response('deleted','200');
+        return response('deleted',Response::HTTP_SERVICE_UNAVAILABLE);
     }
 }
