@@ -4,18 +4,30 @@ Vue.use(VueRouter)
 
 import Home from './components/home.vue';
 import Show from './components/show.vue';
+import EditPost from './components/editPost.vue';
+import CreatePost from './components/CreatePost';
 
 const routes = [
     {
         path: '/',
         component: Home,
-        name: Home,
+        name: 'Home',
     },
     {
-        path: 'show/:slug',
+        path: '/show/:slug',
         component: Show,
-        name: Show,
-        props: true 
+        name: 'Show',
+        props: true
+    },
+    {
+        path: '/edit/:slug',
+        component: EditPost,
+        name: 'EditPost'
+    },
+    {
+        path: '/create_post',
+        component: CreatePost,
+        name: 'CreatePost'
     }
 ]
 
