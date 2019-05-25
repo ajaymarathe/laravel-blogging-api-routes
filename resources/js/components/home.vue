@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <h1>{{ post.title}}</h1>
                         <p v-if="post.body" v-html="post.body.substring(0, 100)+'...'"></p>
-                        <router-link  class="btn btn-primary" to="show">Go to Foo</router-link>
+                        <router-link :to="{name: 'Show', params: {slug: post.slug}}"  class="btn btn-primary">Go to Foo</router-link>
                     </div>
                 </div>
             </div>
