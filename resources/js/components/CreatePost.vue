@@ -15,7 +15,7 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<markdown-editor v-model="body" ref="markdownEditor"></markdown-editor>
+						<ckeditor :editor="editor" v-model="body" :config="editorConfig"></ckeditor>
 					</div>
 					<div class="form-group">
 						<input @click="CreatePost" type="submit" class="btn btn-primary">
@@ -27,12 +27,17 @@
 </template>
 <script type="text/javascript">
 import {  mapGetters } from 'vuex'	
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 	export default {
 		data(){
 			return {
 				title:'',
 				category:'',
-				body:'',
+				editor: ClassicEditor,
+                body: '<p>Content of the editor.</p>',
+                editorConfig: {
+                    // The configuration of the editor.
+                }
 			}
 		},
 		mounted(){

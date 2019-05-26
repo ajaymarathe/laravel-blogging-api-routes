@@ -51,6 +51,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $post = $request->all();
         $post->update($request->all());
         return response('updated','200');
     }

@@ -17,9 +17,6 @@ export default new Vuex.Store({
         get_single_post(state, get_single_post){
             state.single_post = get_single_post
         },
-        // edit_post(state, edit_post){
-        //     state.edit_data = edit_post
-        // }
         get_categories(state,get_categories){
             state.categories = get_categories
         }
@@ -31,9 +28,6 @@ export default new Vuex.Store({
         single_post: state =>{
             return state.single_post;
         },
-        // Edit_post_data: state =>{
-        //     return state.Edit_post_data
-        // },
         categories: state =>{
             return state.categories
         }
@@ -64,8 +58,12 @@ export default new Vuex.Store({
             });
         },
         // Edit the post
-        Edit_Post({commit},slug){
-            axios.post('http://localhost:8000/api/posts/'+slug)
+        Edit_Post(UpdateData,slug){
+            axios.post('http://localhost:8000/api/posts/'+slug,{
+                title: UpdateData[0],
+                category: UpdateData[1],
+                body: UpdateData[2]
+            })
             .then(res=>{
                 console.log(res);
             })
@@ -110,6 +108,18 @@ export default new Vuex.Store({
                  
                 console.log("this is error",error);
             })  
+        },
+        // delete the category
+        Delete_Category({dispatch,commit},category_id){
+            console.log('delete id',category_id)
+            axios.delete('http://localhost:8000/api/category/'+category_id)
+            .then(res => {
+                 dispatch('get_Categories')
+                console.log("this is res",res);
+            })
+            .catch((error) =>{
+                console.log(error);
+            });
         }
     }
   })

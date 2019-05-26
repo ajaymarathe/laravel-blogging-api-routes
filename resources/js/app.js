@@ -24,10 +24,8 @@ Vue.component('App', require('./App.vue').default);
 import router from './router.js';
 import store from './store';
 
-import VueSimplemde from 'vue-simplemde'
-import 'simplemde/dist/simplemde.min.css'
-
-Vue.use(VueSimplemde)
+import CKEditor from '@ckeditor/ckeditor5-vue';
+Vue.use( CKEditor );
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

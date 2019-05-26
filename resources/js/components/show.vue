@@ -8,7 +8,7 @@
                     </div>
                     <div class="card-body">
                         <h1>{{ single_post.title}}</h1>
-                        <p v-if="single_post.body" v-html="single_post.body"></p>
+                        <p v-if="single_post.body" v-html="single_post.body" ></p>
                         <div class="w-100 d-flex justify-content-end">
                             <div class="dropdown show">
                               <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

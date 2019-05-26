@@ -6,6 +6,9 @@ import Home from './components/home.vue';
 import Show from './components/show.vue';
 import EditPost from './components/editPost.vue';
 import CreatePost from './components/CreatePost';
+import Categories from './components/category';
+import CategoryEdit from './components/categoryEdit';
+
 
 const routes = [
     {
@@ -28,6 +31,16 @@ const routes = [
         path: '/create_post',
         component: CreatePost,
         name: 'CreatePost'
+    },
+    {
+        path: '/category/',
+        component: Categories,
+        name: 'Categories'
+    },
+    {
+        path: '/categoryEdit',
+        component: CategoryEdit,
+        name: 'CategoryEdit'
     }
 ]
 
