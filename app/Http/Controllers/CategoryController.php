@@ -50,7 +50,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->update($request->all());
-        return response('updated','200');
+        return response('updated','200'); 
     }
 
     /**

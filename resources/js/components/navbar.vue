@@ -17,7 +17,7 @@
                     <router-link to="/category" class="nav-link">Categories</router-link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                    <router-link to="/create_category" class="nav-link">Create Category</router-link>
                 </li>
                 </ul>
             </div>

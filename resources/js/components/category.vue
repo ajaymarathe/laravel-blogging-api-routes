@@ -45,7 +45,7 @@ import {  mapGetters } from 'vuex'
 		methods:{
 			DeleteCategory(category_id){
 				console.log(category_id)
-				this.$store.dispatch('Delete_Category',category_id)
+				this.$store.dispatch('Delete_Category',category_id)	
 			}
 		}
 	}

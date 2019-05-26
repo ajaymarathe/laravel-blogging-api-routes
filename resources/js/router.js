@@ -8,6 +8,7 @@ import EditPost from './components/editPost.vue';
 import CreatePost from './components/CreatePost';
 import Categories from './components/category';
 import CategoryEdit from './components/categoryEdit';
+import CreateCategory from './components/CreateCategory.vue';
 
 
 const routes = [
@@ -38,9 +39,14 @@ const routes = [
         name: 'Categories'
     },
     {
-        path: '/categoryEdit',
+        path: '/categoryEdit/:id',
         component: CategoryEdit,
         name: 'CategoryEdit'
+    },
+    {
+        path: '/create_category',
+        component: CreateCategory,
+        name: 'CreateCategory'
     }
 ]
 

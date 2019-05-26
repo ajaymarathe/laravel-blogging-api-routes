@@ -9,6 +9,7 @@ export default new Vuex.Store({
         post: '',
         single_post:'',
         categories:'',
+        category:'',
     },
     mutations: {
         get_Post(state,get_Post){
@@ -19,6 +20,9 @@ export default new Vuex.Store({
         },
         get_categories(state,get_categories){
             state.categories = get_categories
+        },
+        get_single_category(state,get_single_category){
+            state.category = get_single_category
         }
     },
     getters: {
@@ -30,6 +34,9 @@ export default new Vuex.Store({
         },
         categories: state =>{
             return state.categories
+        },
+        category: state => {
+            return state.category
         }
     },
     actions: {
@@ -114,12 +121,47 @@ export default new Vuex.Store({
             console.log('delete id',category_id)
             axios.delete('http://localhost:8000/api/category/'+category_id)
             .then(res => {
-                 dispatch('get_Categories')
+                dispatch('get_Categories')
                 console.log("this is res",res);
             })
             .catch((error) =>{
                 console.log(error);
             });
+        },
+        get_single_category({commit},id){
+            axios.get('http://localhost:8000/api/category/'+id)
+            .then(res =>{
+                console.log(res.data)
+                commit('get_single_category',res.data)
+            })
+            .catch((error) =>{
+                console.log("this is error",error)
+            })
+        },
+        Create_Category({commit},CategoryData){
+            axios.post('http://localhost:8000/api/category/',{
+                category: CategoryData[0],
+                user_id: 2
+            })
+            .then(res =>{
+                console.log(res)
+                router.push('category')
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        },
+        Update_Category({commit},CatData){
+            axios.patch('http://localhost:8000/api/category/'+CatData[1],{
+                category: CatData[0],
+                user_id: 2,
+            })
+            .then(res => {
+                console.log(res)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
         }
     }
   })
