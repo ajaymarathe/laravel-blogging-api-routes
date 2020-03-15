@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Resources\Post as PostResource;
 
 class PostController extends Controller
 {
@@ -15,7 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::latest()->get();
+        $post = Post::latest()->get();
+        return PostResource::collection($post);
     }
 
     /**
@@ -39,7 +41,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return $post;
+        return PostResource::make($post);
     }
 
     /**
@@ -51,7 +53,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $post = $request->all();
+        $request['slug'] = str_slug($request->title);
         $post->update($request->all());
         return response('updated','200');
     }

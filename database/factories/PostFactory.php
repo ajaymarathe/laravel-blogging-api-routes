@@ -11,7 +11,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'title' => $title,
         'slug' => str_slug($title),
         'body'=> $faker->text,
-        'category'=> $faker->title,
+        'category'=> $faker->word,
         'user_id'=> function(){
             return \App\User::all()->random();
         }
