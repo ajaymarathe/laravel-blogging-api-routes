@@ -3,9 +3,10 @@
 use Illuminate\Http\Request;
 
 /**
- * post
- * category
- * comments
+ * Post
+ * Category
+ * Comments
+ * Like
  */
 
  /* cors origin  */

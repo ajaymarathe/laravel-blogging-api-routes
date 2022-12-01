@@ -3,11 +3,11 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\User as UserResource;
 use App\Http\Resources\Comments as CommentResource;
+use App\Http\Resources\User as UserResource;
 
 
-class Post extends JsonResource
+class Comments extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,18 +17,10 @@ class Post extends JsonResource
      */
     public function toArray($request)
     {
-        $totalCommentPostHas = [];
-        foreach ($this->comments as $key => $comment) {
-            $totalCommentPostHas =  new CommentResource($comment);
-        }
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'slug' => $this->slug,
-            'description' => $this->body,
-            'category' => $this->category,
+            'body' => $this->body,
             'user' =>  new UserResource($this->user),
-            'comments' => $totalCommentPostHas,
             'created_at' =>  $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffForHumans(),
         ];
