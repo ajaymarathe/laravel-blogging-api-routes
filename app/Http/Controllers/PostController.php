@@ -28,9 +28,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request['slug'] = str_slug($request->title);
-        Post::create($request->all());
-        return response('created',Response::HTTP_CREATED);
+       $request['slug'] = str_slug($request->title);
+       $post = Post::create($request->all());
+       return response()->json(new PostResource($post), 200);
     }
 
     /**
