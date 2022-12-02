@@ -21,6 +21,7 @@ class Comments extends JsonResource
           'id' => $this->id,
           'body' => $this->body,
           'user' =>  new UserResource($this->user),
+          'post_id' => $this->post_id,
           'created_at' =>  $this->created_at->diffForHumans(),
           'updated_at' => $this->updated_at->diffForHumans(),
       ];
