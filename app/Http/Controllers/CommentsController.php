@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comments;
 use App\Post;
 use Illuminate\Http\Request;
+use App\Http\Resources\Comments as CommentResource;
 
 class CommentsController extends Controller
 {
@@ -26,8 +27,8 @@ class CommentsController extends Controller
      */
     public function store(Post $post,Request $request)
     {
-        $post->comments()->create($request->all());
-        return response('created','200');
+        $comment = $post->comments()->create($request->all());
+        return response()->json(new CommentResource($comment), 200);
     }
 
     /**
