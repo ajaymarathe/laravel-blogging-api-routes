@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Like;
 use App\Post;
 use Illuminate\Http\Request;
+use App\Http\Resources\Like as LikeResource;
 
 class LikeController extends Controller
 {
@@ -15,7 +16,7 @@ class LikeController extends Controller
    */
   public function index()
   {
-      return Like::latest()->get(); 
+      return Like::latest()->get();
   }
 
   /**
@@ -41,10 +42,10 @@ class LikeController extends Controller
       [ 'post_id' => $post->id, 'user_id' => $request->user_id ],
       ['like' => $request->like ]
     );
-    return response()->json($like, 200);
+    return response()->json(new LikeResource($like), 200);
   }
 
-  /** 
+  /**
    * Display the specified resource.
    *
    * @param  \App\Like  $like
