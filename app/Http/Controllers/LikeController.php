@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Like;
+use App\Post;
 use Illuminate\Http\Request;
 
 class LikeController extends Controller
@@ -33,14 +34,17 @@ class LikeController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(Post $post, Request $request)
   {
-    return $this->user();
-    
-    // return response('created','200');
+
+    $like = $post->likes()->updateOrCreate(
+      [ 'post_id' => $post->id, 'user_id' => $request->user_id ],
+      ['like' => $request->like ]
+    );
+    return response()->json($like, 200);
   }
 
-  /**
+  /** 
    * Display the specified resource.
    *
    * @param  \App\Like  $like

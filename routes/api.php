@@ -17,6 +17,8 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, PATCH, DELETE");
 Route::apiResource('posts','PostController');
 Route::apiResource('category','CategoryController');
 Route::apiResource('/post/{post}/comment','CommentsController');
+Route::apiResource('/post/{post}/like','LikeController');
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

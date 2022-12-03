@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Comments;
 use App\Category;
+use App\Like;
 
 class Post extends Model
 {
@@ -25,6 +26,10 @@ class Post extends Model
 
     public function cateogry(){
         return $this->belongsTo(Category::class);
+    }
+
+    public function likes() {
+        return $this->hasMany(Like::class);
     }
 
 }
